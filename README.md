@@ -12,4 +12,4 @@ npm start
 ```
 > App will automatically open default browser on your system if not then click [0.0.0.0:3000](http://0.0.0.0:4004) or your systems network address suffixed with `3000` as port
 
-> Make sure `4004` port is not in use
+> Make sure `3000` port is not in use
