@@ -1,5 +1,4 @@
 export async function* BubbleSort(array, swap, highlight, marksort, algoIdx) {
-  console.log("Inside BubbleSort...")
   for (let i = 0; i < array.length; i++) {
     for (var j = 0; j < array.length - i - 1; j++) {
       yield await highlight([j, j + 1]);
