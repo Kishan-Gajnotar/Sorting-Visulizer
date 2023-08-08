@@ -1,5 +1,4 @@
 export async function* SelectionSort(array, swap, highlight, marksort, algoIdx) {
-  console.log("Inside SelectionSort...")
   for (let i = 0; i < array.length; i++) {
     let maxIndex = 0;
     for (var j = 0; j < array.length - i; j++) {
