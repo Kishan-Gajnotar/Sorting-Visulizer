@@ -1,64 +1,32 @@
-import AppBar from '@mui/material/AppBar';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
 import { makeStyles } from '@mui/styles';
-import { sortingAlgorithms } from '../common/config';
-import React, { useState } from "react";
 import { Controller } from './Controller';
+import { useData, useControls } from "../common/store"
+import { NavBar } from "./Navbar";
+import { Footer } from "./Footer"
+import styled from "styled-components";
 
-
-
-const useStyles = makeStyles(() => ({
-    root: {
-        width: "100%",
-        boxSizing: 'border-box',
-        padding: '0 20px'
-    },
-    appBar: {
-        display: 'flex',
-        justifyContent: 'center',
-    },
-}));
+const Container = styled.div`
+  margin: 0 10px;
+  min-height: calc(100vh - 50px);
+  position: relative;
+  margin-bottom: 50px;
+`;
 
 export function SortingVisulizer() {
-
-    const classes = useStyles();
-    const [algorithm, setAlgorithm] = useState(0);
+    const data = useData();
+    const controls = useControls();
+    const [
+        algorithm,
+        setAlgorithm
+    ] = [data.algorithm, data.setAlgorithm]
 
     return (
         <>
-            <div className={classes.root}>
-                <h2>Sorting Algorithms Visualizer</h2>
-                <AppBar position="static" color="default">
-                    <Tabs
-                        value={algorithm}
-                        onChange={(event, id) => setAlgorithm(id)}
-                        justifyContent="center"
-                        indicatorColor="primary"
-                        textColor="primary"
-                        variant="scrollable"
-                        scrollButtons="auto"
-                    >
-                        {sortingAlgorithms.map((algorithm, index) => (
-                            <Tab
-                                key={algorithm.name}
-                                label={algorithm.title}
-                            />
-                        ))}
-                        <Tab key='AllSort' label="All" />
-                    </Tabs>
-                </AppBar>
-                {algorithm !== 6 && algorithm !== 4 && algorithm !== 5
-                    ?
-                    (
-                        <Controller algo={sortingAlgorithms[algorithm]} algorithm={algorithm} />
-                    )
-                    :
-                    (
-                        <p>This is Still in Implimentation Phase.</p>
-                    )
-                }
-            </div>
+            <Container>
+                <NavBar algorithm={algorithm} setAlgorithm={setAlgorithm} resetSorting={controls.resetSorting} />
+                <Controller key={algorithm} data={data} controls={controls} />
+                <Footer />
+            </Container>
         </>
     )
 }
