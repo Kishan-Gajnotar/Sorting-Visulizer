@@ -1,7 +1,6 @@
-export async function* HeapSort(array, swap, highlight, markSort, algoIdx) {
+export async function* HeapSort(array, swap, highlight, markSort) {
   let arrLength = array.length;
   for (let i = Math.floor(arrLength / 2) - 1; i >= 0; i--) {
-    if (algoIdx !== 3) return;
     yield* await maxHeap(i);
   }
 
@@ -20,19 +19,19 @@ export async function* HeapSort(array, swap, highlight, markSort, algoIdx) {
     let max = i;
 
     const highlightArray = [];
-    if (left < arrLength)
+    if(left < arrLength)
       highlightArray.push(left);
-    if (right < arrLength)
+    if(right < arrLength)
       highlightArray.push(right);
     yield await highlight(highlightArray, i);
 
-    if (left < arrLength) {
+    if(left < arrLength){
       if (array[left] > array[max]) {
         max = left;
       }
     }
 
-    if (right < arrLength) {
+    if(right < arrLength){
       if (array[right] > array[max]) {
         max = right;
       }

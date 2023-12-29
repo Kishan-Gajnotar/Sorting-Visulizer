@@ -4,7 +4,7 @@ import {
   comparisionColor,
   swapColor,
   sortedColor,
-  swapTime
+  pivotColor,
 } from "../../common/config";
 
 import {
@@ -14,26 +14,30 @@ import {
   destinationAnimation,
 } from "../../common/styles";
 
-
 const Source = styled(ArrayItem)`
   animation: ${(props) => destinationAnimation(props.distance, swapColor)}
-    ${() => swapTime / 1000}s forwards;
+    ${(props) => props.swapTime / 1000}s forwards;
 `;
 
 const Destination = styled(ArrayItem)`
   animation: ${(props) => sourceAnimation(props.distance, swapColor)}
-    ${() => swapTime / 1000}s forwards;
+    ${(props) => props.swapTime / 1000}s forwards;
 `;
 
 export function ArrayContainer({
   array,
   source,
   destination,
+  pivot = -1,
   highlightIndices,
-  sortedIndices
+  sortedIndices,
+  swapTime
 }) {
 
   function getBackgroundColor(i) {
+    if (i === pivot) {
+      return pivotColor;
+    }
 
     if (highlightIndices.includes(i)) {
       return comparisionColor;
@@ -53,6 +57,7 @@ export function ArrayContainer({
             <Source
               key={i + ":" + source + ":" + destination + ":" + value}
               distance={destination - source}
+              swapTime={swapTime}
               style={{
                 order: destination,
                 backgroundColor: getBackgroundColor(i),
@@ -67,6 +72,7 @@ export function ArrayContainer({
             <Destination
               key={i + ":" + destination + ":" + source + ":" + value}
               distance={destination - source}
+              swapTime={swapTime}
               style={{
                 order: source,
                 backgroundColor: getBackgroundColor(i),
