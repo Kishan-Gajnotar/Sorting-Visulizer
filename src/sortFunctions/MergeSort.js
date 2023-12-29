@@ -7,7 +7,7 @@ export async function* MergeSort(
   finalMerge = true
 ) {
   if (array.length === 1) {
-    if (finalMerge)
+    if(finalMerge)
       markSort(0);
     return array;
   }
@@ -38,14 +38,14 @@ export async function* MergeSort(
           off1 + leftIndex + rightIndex,
           off1 + result.length,
         );
-        if (finalMerge)
+        if(finalMerge)
           yield await markSort(off1 + result.length);
         result.push(left[leftIndex]);
         leftIndex++;
       } else {
         yield await highlight([off1 + leftIndex + rightIndex, off2 + rightIndex]);
         yield await combine(off2 + rightIndex, off1 + result.length);
-        if (finalMerge)
+        if(finalMerge)
           yield await markSort(off1 + result.length);
         result.push(right[rightIndex]);
         rightIndex++;
@@ -54,7 +54,7 @@ export async function* MergeSort(
 
     while (leftIndex < left.length) {
       yield await highlight([off1 + leftIndex + rightIndex]);
-      if (finalMerge)
+      if(finalMerge)
         yield await markSort(off1 + leftIndex + rightIndex);
       result.push(left[leftIndex]);
       leftIndex++;
@@ -62,7 +62,7 @@ export async function* MergeSort(
 
     while (rightIndex < right.length) {
       yield await highlight([off1 + leftIndex + rightIndex]);
-      if (finalMerge)
+      if(finalMerge)
         yield await markSort(off1 + leftIndex + rightIndex);
       result.push(right[rightIndex]);
       rightIndex++;
