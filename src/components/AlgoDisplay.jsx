@@ -31,18 +31,12 @@ function TabPanel(props) {
       {...other}
       style={{ maxWidth: "100%" }}
     >
-      {/* {console.log("tabpanel inside...", value, index, children)} */}
       {value === index && children}
     </div>
   );
 }
 
 export function AlgoDisplay(props) {
-  // const resetSorting = props.controls.resetSorting
-  // useEffect(() => {
-  //   resetSorting();
-  // }, [props.algoIdx]);
-  console.log("algo/....")
   return (
     <div style={flexCenter}>
       {sortingAlgorithms.map((algoInfo, idx) => (

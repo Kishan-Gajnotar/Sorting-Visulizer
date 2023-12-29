@@ -40,7 +40,6 @@ const ExecutionBar = styled.div`
 
 
 export function Controller(props) {
-    // console.log("props at Controller....", props)
     const [isPausing, setIsPausing] = useState(false);
     const data = props.data
     const controls = props.controls
@@ -60,8 +59,7 @@ export function Controller(props) {
     ] = [controls.progress, controls.speed, controls.startSorting, controls.pauseSorting, controls.resetSorting, controls.setSpeed]
 
     const [arrayInput, setArrayInput] = useState(sortingArray);
-    console.log("Controller progress..",progress)
-    
+        
     const startElement = <VscDebugStart onClick={startSorting} />;
     const pauseElement = <ImPause onClick={pauseAndDelaySorting} />;
     const resetElement = <VscDebugRestart onClick={resetSorting} />;

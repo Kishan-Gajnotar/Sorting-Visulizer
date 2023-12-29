@@ -13,7 +13,6 @@ export function NavBar({algorithm, setAlgorithm, resetSorting}) {
     return (
         <>
             <h2>Sorting Algorithms Visualizer</h2>
-            {/* {console.log("algorithm navbar...",algorithm)} */}
             <AppBar position="static" color="default">
                 <Tabs
                     value={algorithm}

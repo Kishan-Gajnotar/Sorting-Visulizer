@@ -13,11 +13,9 @@ export const useControls = () => {
     const doneSorting = useCallback(() => setProgress("done"), []);
     const resetSorting = useCallback(() => {
         setProgress("reset");
-        console.log("reset called....",progress)
         setDoneCount(0);
     }, []);
     // const markSortngDone = useCallback(() => {
-    //     // console.log("useControl..",sortingAlgorithms.length)
     //     if (useData.getState().algorithm === sortingAlgorithms.length) {
     //         // if (4 === sortingAlgorithms.length) {  // harded code for making this condition false
     //         if (doneCount === sortingAlgorithms.length - 1) {

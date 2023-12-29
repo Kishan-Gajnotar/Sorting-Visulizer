@@ -51,18 +51,16 @@ export function SortManager(props) {
   const swapTimeRef = useRef(controls.swapTime); // Add these refs
   const compareTimeRef = useRef(controls.compareTime);
   
-  useEffect(() => {
-    console.log("##mounted...", props.data.algorithm);
-    return ()=>{
-      console.log("##unmounted..",props.data.algorithm);
-    }
-  },[])
-  console.log("prgress..",controls.progress)
+  // useEffect(() => {
+  //   console.log("##mounted...", props.data.algorithm);
+  //   return ()=>{
+  //     console.log("##unmounted..",props.data.algorithm);
+  //   }
+  // },[])
   useEffect(() => { 
     progress.current = controls.progress;
     if (progress.current === "start") runAlgo();
     if (progress.current === "reset") reset();
-    // isComponentUnMounted.current = false; 
     return () => {
       isComponentUnMounted.current = true;
     };
@@ -97,7 +95,7 @@ export function SortManager(props) {
     algoArray.current[j] = tmp;
     setSwapIndices([i, j]);
     swapCount.current += 1;
-    console.log("swap...", swapTimeRef.current)
+    // console.log("swap...", swapTimeRef.current)
     await delay(swapTimeRef.current);
   }
 
@@ -105,7 +103,7 @@ export function SortManager(props) {
     setSwapIndices([-1, -1]);
     comparisionCount.current += 1;
     setHightlightedIndices(indices);
-    console.log("highlight compare...", compareTimeRef.current)
+    // console.log("highlight compare...", compareTimeRef.current)
     await delay(compareTimeRef.current);
   }
 
@@ -147,10 +145,9 @@ export function SortManager(props) {
     ) {
       completion = await sortProgressIterator.current?.next();
     }
-    // console.log("isComponentUnMounted.current..",isComponentUnMounted.current)
-    if (progress.current === "reset") {
-      return;
-    }
+    // if (isComponentUnMounted.current) {
+    //   return;
+    // }
     if (!isAlgoExecutionOver.current && completion?.done) {
       isAlgoExecutionOver.current = true;
       pivot.current = -1;

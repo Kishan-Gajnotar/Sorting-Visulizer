@@ -7,7 +7,6 @@ export function Timer({ isAlgoExecutionOver, controls }) {
   const [milliSeconds, setMilliSeconds] = useState(0);
 
   const progress = controls.progress;
-  // console.log("timer..",controls)
   function resetTimer() {
     setMilliSeconds(0);
     setSeconds(0);
