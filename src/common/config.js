@@ -19,8 +19,8 @@ export const sortedColor = "springgreen";
 export const pivotColor = "sandybrown";
 
 // time setting
-export let swapTime = 1000;
-export let compareTime = 500;
+// export let swapTime = 1000;
+// export let compareTime = 500;
 
 export const sortingAlgorithms = [
     { component: BubbleSort, title: "Bubble", name: "BubbleSort" },

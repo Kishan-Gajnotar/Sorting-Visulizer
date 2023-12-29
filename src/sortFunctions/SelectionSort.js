@@ -1,9 +1,9 @@
-export async function* SelectionSort(array, swap, highlight, marksort, algoIdx) {
+export async function* SelectionSort(array, swap, highlight, marksort) {
   for (let i = 0; i < array.length; i++) {
     let maxIndex = 0;
     for (var j = 0; j < array.length - i; j++) {
       yield await highlight([maxIndex, j]);
-      if (algoIdx !== 1) return;
+
       if (array[maxIndex] < array[j]) {
         maxIndex = j;
       }
