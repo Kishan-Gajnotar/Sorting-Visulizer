@@ -1,5 +1,4 @@
 import { useState, useCallback } from "react";
-import { compareTime, swapTime, sortingAlgorithms } from "./config";
 
 export const useControls = () => {
     const [progress, setProgress] = useState("reset");
@@ -56,7 +55,7 @@ export const useControls = () => {
 
 export const useData = () => {
     const [algorithm, setAlgorithm] = useState(0);
-    const [sortingArray, setSortingArray] = useState([initArrayForScreenSize()]);
+    const [sortingArray, setSortingArray] = useState(initArrayForScreenSize());
 
     return {
         algorithm,

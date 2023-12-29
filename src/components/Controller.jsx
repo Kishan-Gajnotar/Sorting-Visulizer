@@ -103,7 +103,6 @@ export function Controller(props) {
         setSortingArray(randomArray);
         resetSorting();
     }
-
     return (
         <div>
             <ControlBar>
